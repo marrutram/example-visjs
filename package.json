@@ -1,0 +1,29 @@
+{
+  "name": "vis-example",
+  "version": "1.0.0",
+  "description": "vis example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rutmartinez/example-visjs.git"
+  },
+  "keywords": [
+    "vis.js",
+    "angularjs"
+  ],
+  "author": "ldmarz, rut",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rutmartinez/example-visjs/issues"
+  },
+  "homepage": "https://github.com/rutmartinez/example-visjs#readme",
+  "dependencies": {
+    "angular": "1.5.8",
+    "angular-material": "1.1.5",
+    "jquery": "3.2.1",
+    "lodash": "4.17.4"
+  }
+}
