@@ -1,6 +1,6 @@
 const myController = function ($scope, $timeout) {
-  const templateAngular = `<table>
-  <tr>
+  const templateHeaders = `
+  <table>
     <td>#</td>
     <td>nombre</td>
     <td>apellido</td>
@@ -10,40 +10,36 @@ const myController = function ($scope, $timeout) {
     <td>apellido</td>
 
     <td>apellido</td>
-  </tr>
+  </table>`
+  const templateAngular = `<table border="1">
   <tr>
     <td>1</td>
     <td>alguien</td>
     <td>unApellido</td>
-  </tr>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>somebody</td>
-    <td>talkMe</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>looks</td>
-    <td>likeAGirl</td>
+    <td>apellido</td>
+    <td>apellido</td>
+    <td>apellido</td>
+    <td>apellido</td>
+
+    <td>apellido</td>
   </tr>
 </table>`;
   function getGroups() {
     return [
       {
         id: "1",
-        content: templateAngular,
+        content: templateHeaders,
         nestedGroups: ["1.1"],
         // Optional: a field 'className', 'style', 'order', [properties]
       },
       {
         id: "1.1",
-        content: 'Un task del wp 1',
+        content: templateAngular,
         nestedGroups: ["1.2"],
       },
       {
         id: "1.2",
-        content: 'un hermoso y radiante labor',
+        content: templateAngular,
       },
     ];
   }
@@ -51,20 +47,21 @@ const myController = function ($scope, $timeout) {
   var container = document.getElementById('visualization');
 
   // Create a DataSet (allows two way data-binding)
-  var items = new vis.DataSet([
-    { id: 1, content: 'WP 1', start: '2013-04-20', end: '2013-04-22', group: "1"},
-    { id: 2, content: 'Una task del wp 1', start: '2013-04-20', end: '2013-04-21', group: "1.1"},
-    { id: 3, content: 'Una hermoso y radiante labor', start: '2013-04-20', end: '2013-04-20', group: "1.2"}
-
-  ]);
+  const temp = [];
+  const group = [];
+  for (x=0; x < 3000; x++) {
+    const newGroup = 'facyGroud' + x;
+    group.push({id: newGroup, content: templateAngular})
+    temp.push({id: x, content: 'WP ' + x, start: '2013-04-20', end: '2013-04-21', group:newGroup })
+  }
+  var items = new vis.DataSet(temp);
 
   // Configuration for the Timeline
   var options = {
   };
-  var groups = getGroups();
 
   // Create a Timeline
-  var timeline = new vis.Timeline(container, items, new vis.DataSet(groups), options);
+  var timeline = new vis.Timeline(container, items, new vis.DataSet(group), options);
   $timeout(function() {
     console.log('ciaisisi')
     $scope.$digest();
